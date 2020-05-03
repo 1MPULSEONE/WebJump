@@ -32,17 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private GoogleSignInClient mGoogleSignInClient;
     private final static int RC_SIGN_IN = 123;
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        FirebaseUser user = mAuth.getCurrentUser();
-        if(user!=null){
-            Intent intToHome = new Intent(MainActivity.this,Profession.class);
-            startActivity(intToHome);
-            finish();
-            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-        }
-    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -174,15 +164,6 @@ public class MainActivity extends AppCompatActivity {
             } catch (ApiException e) {
                 // Google Sign In failed, update UI appropriately
                 Log.w("googleSingIn", "Google sign in failed", e);
-                Snackbar
-                        .make(
-                                findViewById(R.id.activity_registration),
-                                getString(R.string.some_problem),
-                                Snackbar.LENGTH_LONG
-                        )
-                        .setTextColor(getResources().getColor(R.color.bg_grey))
-                        .setBackgroundTint(getResources().getColor(R.color.orange))
-                        .show();
             }
             // ...
         }
