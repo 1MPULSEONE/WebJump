@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">WebJump</string>
+    <!-- Activity_main strings -->
+    <string name="Login">Вход</string>
+    <string name="email">Почта</string>
+    <string name="password">Пароль</string>
+    <string name="entry">Войти</string>
+    <string name="forgot_password">Забыли пароль?</string>
+    <string name="not_have_acc">Нет аккаунта?</string>
+    <string name="register">Зарегистрироваться</string>
+    <string name="title_activity_acitivity_registration">acitivity_registration</string>
+    <!-- activity_registration strings -->
+    <string name="reg">Регистрация</string>
+    <string name="nickname">Логин</string>
+    <string name="have_acc">Есть аккаунт?</string>
+    <!-- SnackBars Messages -->
+    <string name="error_empty_fields">Пожалуйста, заполните все необходимые поля!</string>
+    <string name="not_valid_email">Пожалуйста,введите действительную почту!</string>
+    <string name="passwords_length">Пароль должен содержать от 6 до 15 символов!</string>
+    <string name="login_length">Логин должен содержать от 6 до 12 символов!</string>
+    <string name="some_problem">Возникла не предвиденная ошибка, пожалуйста, попробуйте позже!</string>
+    <!-- Library strings -->
+    <string name="popular">Популярные</string>
+
+    <!-- Books strings -->
+    <string-array name="programming_books">
+        <item>React.js Быстрый старт</item>
+        <item>Думай как программист</item>
+        <item>Командная строка LINUX</item>
+        <item>Java SE8 Базовый курс</item>
+        <item>Алгоритмы на Java </item>
+        <item>Head First Java </item>
+    </string-array>
+    <string-array name="author">
+        <item>Стоян Стефанов</item>
+        <item>Антон Спрол</item>
+        <item>Ульям Шоттс</item>
+        <item>Ульям Шоттс</item>
+        <item>Роберт Седжвик, Кевин Уэйн</item>
+        <item>Кати Сьерра, Берт Бейтс</item>
+    </string-array>
+</resources>

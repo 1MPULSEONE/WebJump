@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#EEF1F5</color>
+    <color name="colorAccent">#03DAC5</color>
+    <!-- Activity_main colors -->
+    <color name="orange">#FF6E02</color>
+    <color name="grey">#787F99</color>
+    <color name="light_grey">#A4A9BC</color>
+    <color name="bg_grey">#EEF1F5</color>
+    <!-- For Light UI  -->
+    <color name="Light">#EEF0F5</color>
+    <color name="White">#ffffff</color>
+    <color name="semi_white">#F8F7F7</color>
+    <!-- For Dark UI  -->
+    <color name="Dark">#191a1e</color>
+    <color name="yellow">#fcc73b</color>
+    <color name="black">#000000</color>
+    <color name="light_white">#4DFFFFFF</color>
+</resources>

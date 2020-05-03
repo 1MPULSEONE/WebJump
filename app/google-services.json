@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "713731999303",
+    "firebase_url": "https://web-jump.firebaseio.com",
+    "project_id": "web-jump",
+    "storage_bucket": "web-jump.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:713731999303:android:faeab9b95d42b0f7ca5362",
+        "android_client_info": {
+          "package_name": "com.lovejazz.webjump"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "713731999303-gchamulbudlkjf089gtk7ugiqer6aih9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.lovejazz.webjump",
+            "certificate_hash": "a525728bb0de8ea4bf9ea7edaa771e0827647824"
+          }
+        },
+        {
+          "client_id": "713731999303-edv5037ir58tddf1fim1mokfc4npg8ue.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDoMzbFiX1cvzNjjqi8qUVqWv9kjQiAbfs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "713731999303-edv5037ir58tddf1fim1mokfc4npg8ue.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
