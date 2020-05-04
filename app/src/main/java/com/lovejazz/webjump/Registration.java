@@ -41,6 +41,8 @@ public class Registration extends AppCompatActivity {
     private FirebaseAuth mAuth;
     FirebaseFirestore fstore;
     String userID;
+    private GoogleSignInClient mGoogleSignInClient;
+    private final static int RC_SIGN_IN = 123;
     public static boolean isValid(String email) {
         String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
                 "[a-zA-Z0-9_+&*-]+)*@" +
@@ -60,6 +62,17 @@ public class Registration extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         fstore = FirebaseFirestore.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
+        // GoogleAuth
+        createGoogleRequest();
+        Button googleBtn = findViewById(R.id.button_google);
+        googleBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                signIn();
+                Log.d("Google","`Google acc is OK!`");
+
+            }
+        });
         // EmailAuth
         TextView registerText = findViewById(R.id.register);
         registerText.setOnClickListener(new View.OnClickListener() {
@@ -180,6 +193,99 @@ public class Registration extends AppCompatActivity {
 
     });
 }
+    private void createGoogleRequest() {
+        // Configure Google Sign In
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
+        // Build a GoogleSignInClient with the options specified by gso.
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+    }
+    // Google Sing In
+    private void signIn() {
+        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+        startActivityForResult(signInIntent, RC_SIGN_IN);
+    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
+        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
+        if (requestCode == RC_SIGN_IN) {
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            try {
+                // Google Sign In was successful, authenticate with Firebase
+                GoogleSignInAccount account = task.getResult(ApiException.class);
+                Log.d("googleSingIn", "firebaseAuthWithGoogle:" + account.getId());
+                firebaseAuthWithGoogle(account.getIdToken());
+            } catch (ApiException e) {
+                // Google Sign In failed, update UI appropriately
+                Log.w("googleSingIn", "Google sign in failed", e);
+            }
+            // ...
+        }
+    }
+    private void firebaseAuthWithGoogle(String idToken) {
+        AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
+        mAuth.signInWithCredential(credential)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            String nickname = user.getDisplayName();
+                            String email = user.getEmail();
+                            userID = mAuth.getCurrentUser().getUid();
+                            DocumentReference documentReference = fstore.collection("users").document(userID);
+                            Map<String,Object> userGoogle = new HashMap<>();
+                            userGoogle.put("nickname",nickname);
+                            userGoogle.put("email",email);
+                            userGoogle.put("id",userID);
+                            documentReference.set(userGoogle).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Log.d("Registration","Document is created");
+                                }
+                            })
+                                    .addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Log.d("Registration", "Document is created");
+                                        }
+                                    });
+                            documentReference.set(userGoogle).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Log.d("Registration","Document is created");
+                                }
+                            })
+                                    .addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Log.d("Registration", "Document is created");
+                                        }
+                                    });
+                            Intent intToHome = new Intent(Registration.this,Profession.class);
+                            startActivity(intToHome);
+                            finish();
+                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Snackbar
+                                    .make(
+                                            findViewById(R.id.activity_registration),
+                                            getString(R.string.some_problem),
+                                            Snackbar.LENGTH_LONG
+                                    )
+                                    .setTextColor(getResources().getColor(R.color.bg_grey))
+                                    .setBackgroundTint(getResources().getColor(R.color.orange))
+                                    .show();
+                        }
 
+                        // ...
+                    }
+                });
+    }
 }
