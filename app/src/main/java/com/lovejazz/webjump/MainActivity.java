@@ -18,8 +18,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthCredential;
@@ -27,11 +25,6 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
@@ -44,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
         FirebaseUser user = mAuth.getCurrentUser();
         if(user!=null){
-            Intent intToHome = new Intent(MainActivity.this,Profession.class);
+            Intent intToHome = new Intent(MainActivity.this, MainPage.class);
             startActivity(intToHome);
             finish();
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
@@ -77,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
             FirebaseUser mFireBaseUser = mAuth.getCurrentUser();
             if(mFireBaseUser != null){
                 Log.d("Login","User is logged in!");
-                Intent intent = new Intent(MainActivity.this,Profession.class);
+                Intent intent = new Intent(MainActivity.this, MainPage.class);
                 startActivity(intent);
                 finish();
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
@@ -122,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
                                         .show();
                             }
                             else{
-                                 Intent intToHome = new Intent(MainActivity.this,Profession.class);
+                                 Intent intToHome = new Intent(MainActivity.this, MainPage.class);
                                 startActivity(intToHome);
                                 finish();
                                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
@@ -196,7 +189,7 @@ public class MainActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Intent intToHome = new Intent(MainActivity.this,Profession.class);
+                            Intent intToHome = new Intent(MainActivity.this, MainPage.class);
                             startActivity(intToHome);
                             finish();
                             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);

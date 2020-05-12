@@ -2,17 +2,14 @@ package com.lovejazz.webjump;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -24,7 +21,6 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -166,7 +162,7 @@ public class Registration extends AppCompatActivity {
                                                                         Log.d("Registration", "Document is created");
                                                                     }
                                                                 });
-                                                        Intent intent = new Intent(Registration.this,Profession.class);
+                                                        Intent intent = new Intent(Registration.this, MainPage.class);
                                                         startActivity(intent);
                                                         finish();
                                                         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
@@ -267,7 +263,7 @@ public class Registration extends AppCompatActivity {
                                             Log.d("Registration", "Document is created");
                                         }
                                     });
-                            Intent intToHome = new Intent(Registration.this,Profession.class);
+                            Intent intToHome = new Intent(Registration.this, MainPage.class);
                             startActivity(intToHome);
                             finish();
                             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);

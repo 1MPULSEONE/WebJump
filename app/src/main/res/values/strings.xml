@@ -39,4 +39,11 @@
         <item>Роберт Седжвик, Кевин Уэйн</item>
         <item>Кати Сьерра, Берт Бейтс</item>
     </string-array>
+    <!-- Bottom Navigation -->
+    <string name="library">Библиотека</string>
+    <string name="book">Книга</string>
+    <string name="profile">Профиль</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
