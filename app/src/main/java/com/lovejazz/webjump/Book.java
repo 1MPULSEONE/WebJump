@@ -1,22 +1,22 @@
 package com.lovejazz.webjump;
 
 public class Book {
-    String bookName;
-    String author;
-    double rating;
-    int image;
+    private String name;
+    private String author;
+    private double rating;
+    private int image;
     public Book(){
 
     }
 
-    public Book(String bookName, String author, double rating, int image) {
-        this.bookName = bookName;
+    public Book(String bookName, String author, double rating, int image,String key) {
+        this.name = bookName;
         this.author = author;
         this.image = image;
     }
 
-    public String getBookName() {
-        return bookName;
+    public String getName() {
+        return name;
     }
 
     public String getAuthor() {

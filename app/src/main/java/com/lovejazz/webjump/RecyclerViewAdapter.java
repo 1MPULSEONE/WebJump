@@ -12,15 +12,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
+
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
-    String data1[], data2[];
-    int images[];
+    ArrayList <Book> books;
     Context context;
-    public RecyclerViewAdapter(Context ct,String s1[],String s2[], int img[]){
+    public RecyclerViewAdapter(Context ct,ArrayList<Book> books){
         context = ct;
-        data1 = s1;
-        data2 = s2;
-        images = img;
+        books = books;
     }
     @NonNull
     @Override
@@ -32,24 +31,24 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.myText1.setText(data1[position]);
-        holder.myText2.setText(data2[position]);
-        holder.myImage.setImageResource(images[position]);
+        holder.name.setText(books.get(position).getName());
+        holder.author.setText(books.get(position).getAuthor());
+        holder.bookPic.setImageResource(books.get(position).getImage());
     }
 
     @Override
     public int getItemCount() {
-        return data1.length;
+        return books.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView myText1, myText2;
-        ImageView myImage;
+        TextView name, author;
+        ImageView bookPic;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            myText1 = itemView.findViewById(R.id.book_name);
-            myText2 = itemView.findViewById(R.id.author);
-            myImage = itemView.findViewById(R.id.book);
+            name = itemView.findViewById(R.id.book_name);
+            author = itemView.findViewById(R.id.author);
+            bookPic = itemView.findViewById(R.id.book);
         }
     }
 }
