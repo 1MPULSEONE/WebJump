@@ -4,12 +4,12 @@ public class Book {
     private String name;
     private String author;
     private double rating;
-    private int image;
+    private String image;
     public Book(){
 
     }
 
-    public Book(String bookName, String author, double rating, int image,String key) {
+    public Book(String bookName, String author, double rating, String image,String key) {
         this.name = bookName;
         this.author = author;
         this.image = image;
@@ -24,7 +24,7 @@ public class Book {
     }
 
 
-    public int getImage() {
+    public String getImage() {
         return image;
     }
 }

@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
@@ -17,9 +19,9 @@ import java.util.ArrayList;
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
     ArrayList <Book> books;
     Context context;
-    public RecyclerViewAdapter(Context ct,ArrayList<Book> books){
+    public RecyclerViewAdapter(Context ct,ArrayList<Book> b){
         context = ct;
-        books = books;
+        books = b;
     }
     @NonNull
     @Override
@@ -33,7 +35,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.name.setText(books.get(position).getName());
         holder.author.setText(books.get(position).getAuthor());
-        holder.bookPic.setImageResource(books.get(position).getImage());
+        Picasso.get().load(books.get(position).getImage()).into(holder.bookPic);
     }
 
     @Override
