@@ -18,9 +18,8 @@ public class MainPage extends AppCompatActivity implements BottomNavigationView.
         setContentView(R.layout.mainpage_activity);
         // BottomNavigation
         bottomNavigationView = findViewById(R.id.bottom_navigation);
-
-        bottomNavigationView.setSelectedItemId(R.id.library);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
+        bottomNavigationView.setSelectedItemId(R.id.library);
     }
         Library libraryFragment = new Library();
         Books booksFragment = new Books();
